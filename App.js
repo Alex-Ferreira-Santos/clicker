@@ -1,5 +1,5 @@
-import React,{Component} from 'react';
-import {View,Text} from 'react-native'
+import React from 'react';
+import {View} from 'react-native'
 import styles from './src/styles/app'
 import {NavigationContainer} from '@react-navigation/native'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
@@ -9,8 +9,7 @@ import Main from './src/pages/Main';
 
 const Tab = createBottomTabNavigator()
 
-class App extends Component{
-  render() {
+function App(){
     return (
         <NavigationContainer>
           <View style={styles.container}>
@@ -22,7 +21,6 @@ class App extends Component{
           </Tab.Navigator>
         </NavigationContainer>
     )
-  }
 }
 
 export default App;
