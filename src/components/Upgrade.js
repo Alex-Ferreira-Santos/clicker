@@ -1,14 +1,14 @@
 import React,{Component} from 'react'
 import {View,Text} from 'react-native'
 
-class Super extends Component {
+class Upgrade extends Component {
     render() {
         return(
             <View>
-                <Text>Super</Text>
+                <Text>Upgrade</Text>
             </View>
         )
     }
 }
 
-export default Super
+export default Upgrade
