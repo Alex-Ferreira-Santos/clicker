@@ -24,15 +24,17 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderRadius: 15,
         marginVertical: 30,
-        
+
     },
     life:{
-        backgroundColor: '#c4c4c4',
+        backgroundColor: 'rgba(0,0,0,0.2)',
         paddingVertical: 10,
         width: 200,
         height: 30,
         borderRadius: 10,
         justifyContent: 'center',
+        borderColor: '#c4c4c4',
+        borderWidth: 1,
     },
     health:{
         justifyContent: 'center',
@@ -43,6 +45,12 @@ const styles = StyleSheet.create({
         paddingVertical: 9,
         height: 25,
         borderRadius: 10
+    },
+    stage:{
+        backgroundColor: '#c4c4c4',
+        padding: 10,
+        borderRadius: 10,
+        marginBottom: 10
     }
 })
 

@@ -6,6 +6,7 @@ function Main(){
     const [coins,setCoins] = useState(0)
     const [hp, setHp] = useState(10)
     const [life, setLife] = useState(100)
+    const [stage, setStage] = useState(1)
         return (
             <View style={styles.container}>
                 <View style={styles.coins}>
@@ -19,6 +20,9 @@ function Main(){
                     </View>
                 </View>
 
+                <View style={styles.stage}>
+                    <Text style={{fontSize: 20}}> {stage} / 10</Text>
+                </View>
                 
                 <TouchableHighlight style={styles.clicker} onPress={()=>{
                     setCoins(coins + 1)
@@ -30,14 +34,19 @@ function Main(){
                     }
                     if(life === 0){
                         setLife(100)
+                        setStage(stage + 1)
+                        if(stage === 10){
+                            setStage(1)
+                        }
                     }
+                    
                 }} underlayColor='#8AA9B4'>
                     <Text style={styles.buttonText}>click</Text>
                 </TouchableHighlight>
 
                 <View style={styles.health}>
                     <View style={styles.life}><View style={[styles.TotalLife,{width:`${life}%`}]}/></View>
-                    <Text>{hp} hp</Text>
+                    <Text style={{fontSize: 20}}>{hp} hp</Text>
                 </View>
             </View>
         )
