@@ -1,10 +1,12 @@
 import React,{useState,createContext,useEffect} from 'react'
+import { SectionList } from 'react-native'
 
 export const Context = createContext({})
 
 export function DataContext({children}){
     const [times,setTimes] = useState('1x') 
     const [coins,setCoins] = useState(0)
+    const [defaultCoins,setDefaultCoins] = useState(1)
     const [hp, setHp] = useState(10)
     const [defaultHp, setDefaultHp] = useState(10)
     const [life, setLife] = useState(100)
@@ -13,28 +15,17 @@ export function DataContext({children}){
     const [clickDamage, setClickDamage] = useState(1)
     const [damagePerSecond, setDamagePerSecond] = useState(0)
 
-    /*
-    useEffect(()=>{
-        
-    },[clickDamage])
-    */
-
     function Click(){
-        setCoins(coins + 1)
+        setCoins(coins + defaultCoins)
         let letHp = hp - clickDamage
         let letLife = (letHp * life) / hp
-        /*             
-                        63 - 100
-                        62 - x
-
-         */
-        
         if(letLife <= 0 || letHp <= 0){
             setLife(100)
             setHp(defaultHp)
             setStage(stage + 1)
             if(stage === 10){
                 setStage(1)
+                setDefaultCoins(defaultCoins + 1)
                 let newHp = (defaultHp * 2.5).toFixed(0)
                 setDefaultHp(newHp)
                 setHp(newHp)
@@ -67,6 +58,7 @@ export function DataContext({children}){
             return false
         }else{
             setClickDamage( clickDamage * 2)
+            setCoins(coins - price)
             return true
         }
     }
