@@ -15,14 +15,19 @@ export function DataContext({children}){
 
     /*
     useEffect(()=>{
-        setLifePercent(hp)
+        
     },[clickDamage])
     */
 
     function Click(){
         setCoins(coins + 1)
         let letHp = hp - clickDamage
-        let letLife = life - (clickDamage * 10)
+        let letLife = (letHp * life) / hp
+        /*             
+                        63 - 100
+                        62 - x
+
+         */
         
         if(letLife <= 0 || letHp <= 0){
             setLife(100)
