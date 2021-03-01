@@ -1,28 +1,14 @@
-import React,{useState} from 'react'
+import React,{useContext} from 'react'
 import {View,Text,TouchableHighlight,ScrollView,Image} from 'react-native'
 import styles from '../styles/upgrade'
 import coin from '../img/coin.png'
+import {Context} from '../context/dataContext'
 
 function Upgrade() {
-    const [times,setTimes] = useState('1x') 
+    const {times, Times} = useContext(Context) 
     return(
             <View style={styles.container}>
-                <TouchableHighlight style={styles.times} onPress={()=>{
-                    switch(times){
-                        case '1x':
-                            setTimes('10x')
-                            break
-                        case '10x':
-                            setTimes('100x')
-                            break
-                        case '100x':
-                            setTimes('max')
-                            break
-                        case 'max':
-                            setTimes('1x')
-                            break
-                    }
-                    }} underlayColor='#459E8E'>
+                <TouchableHighlight style={styles.times} onPress={Times} underlayColor='#459E8E'>
                     <Text style={styles.buttonText}>{times}</Text>
                 </TouchableHighlight>
                 <ScrollView contentContainerStyle={styles.contentContainerStyle}>

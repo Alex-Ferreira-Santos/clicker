@@ -1,13 +1,11 @@
-import React,{useState} from 'react'
+import React,{useContext} from 'react'
 import {View,Text,TouchableHighlight,Image} from 'react-native'
 import styles from '../styles/main'
 import coin from '../img/coin.png'
+import {Context} from '../context/dataContext'
 
 function Main(){
-    const [coins,setCoins] = useState(0)
-    const [hp, setHp] = useState(10)
-    const [life, setLife] = useState(100)
-    const [stage, setStage] = useState(1)
+    const { coins, hp, life, stage, Click} = useContext(Context)
         return (
             <View style={styles.container}>
                 <View style={styles.coins}>
@@ -26,23 +24,7 @@ function Main(){
                     <Text style={{fontSize: 20}}> {stage} / 10</Text>
                 </View>
                 
-                <TouchableHighlight style={styles.clicker} onPress={()=>{
-                    setCoins(coins + 1)
-                    setLife(life - 10)
-                    
-                    setHp(hp - 1)
-                    if(hp === 0){
-                        setHp(10)
-                    }
-                    if(life === 0){
-                        setLife(100)
-                        setStage(stage + 1)
-                        if(stage === 10){
-                            setStage(1)
-                        }
-                    }
-                    
-                }} underlayColor='#8AA9B4'>
+                <TouchableHighlight style={styles.clicker} onPress={Click} underlayColor='#8AA9B4'>
                     <Text style={styles.buttonText}>click</Text>
                 </TouchableHighlight>
 

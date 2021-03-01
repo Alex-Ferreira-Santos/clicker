@@ -6,12 +6,14 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import Super from './src/components/Super';
 import Upgrade from './src/components/Upgrade';
 import Main from './src/pages/Main';
+import {DataContext} from './src/context/dataContext'
 
 const Tab = createBottomTabNavigator()
 
 function App(){
-    return (
+    return (  
         <NavigationContainer>
+          <DataContext>
           <View style={styles.container}>
             <Main/>
           </View>
@@ -19,6 +21,7 @@ function App(){
             <Tab.Screen name="Upgrade" component={Upgrade}/>
             <Tab.Screen name="Super" component={Super}/>
           </Tab.Navigator>
+          </DataContext>
         </NavigationContainer>
     )
 }
