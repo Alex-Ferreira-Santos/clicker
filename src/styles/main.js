@@ -24,7 +24,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderRadius: 15,
         marginVertical: 30,
-
+    },
+    coin:{
+        width: 20,
+        height: 20,
     },
     life:{
         backgroundColor: 'rgba(0,0,0,0.2)',

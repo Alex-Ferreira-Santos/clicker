@@ -29,6 +29,9 @@ const styles = StyleSheet.create({
         marginTop: 10,
         height: 60,
         alignItems: 'center',
+        justifyContent: 'space-between',
+        width: '95%',
+        paddingRight: 10,
     },
     img:{
         backgroundColor: 'white',
@@ -40,7 +43,19 @@ const styles = StyleSheet.create({
         marginRight: 20
     },
     buyButton:{
-        backgroundColor: '#11B635'
+        backgroundColor: '#11B635',
+        borderRadius: 15,
+        padding: 8
+    },
+    buyButtonText:{
+        fontSize: 20
+    },
+    text:{
+        fontSize: 18
+    },
+    coin:{
+        width: 20,
+        height: 20,
     }
 })
 

@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
-import {View,Text,TouchableHighlight} from 'react-native'
+import {View,Text,TouchableHighlight,Image} from 'react-native'
 import styles from '../styles/main'
+import coin from '../img/coin.png'
 
 function Main(){
     const [coins,setCoins] = useState(0)
@@ -11,7 +12,8 @@ function Main(){
             <View style={styles.container}>
                 <View style={styles.coins}>
                     <View>
-                       <Text>{coins} coins</Text>
+                       <Text>{coins} <Image source={coin} style={styles.coin}/></Text>
+                       
                         <Text>10 diamonds</Text> 
                     </View>
                     <View>

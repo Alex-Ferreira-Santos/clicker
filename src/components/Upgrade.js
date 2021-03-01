@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
-import {View,Text,TouchableHighlight,ScrollView} from 'react-native'
+import {View,Text,TouchableHighlight,ScrollView,Image} from 'react-native'
 import styles from '../styles/upgrade'
+import coin from '../img/coin.png'
 
 function Upgrade() {
     const [times,setTimes] = useState('1x') 
@@ -28,12 +29,12 @@ function Upgrade() {
                     <View style={styles.upgrade}>
                         <View style={styles.img}/>
                         <View style={styles.stats}>
-                            <Text>Picareta</Text>
-                            <Text>1 de dano</Text>  
+                            <Text style={styles.text}>Picareta</Text>
+                            <Text style={styles.text}>1 de dano</Text>  
                         </View>
-                        <Text>Level</Text>
+                        <Text style={styles.text}>Level 1</Text>
                         <TouchableHighlight style={styles.buyButton}>
-                            <Text style={styles.buyButtonText}>10 coins</Text>
+                            <Text style={styles.buyButtonText}>10 <Image source={coin} style={styles.coin}/></Text>
                         </TouchableHighlight>
                     </View>
                 </ScrollView>
