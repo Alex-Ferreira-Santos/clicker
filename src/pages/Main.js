@@ -5,18 +5,18 @@ import coin from '../img/coin.png'
 import {Context} from '../context/dataContext'
 
 function Main(){
-    const { coins, hp, life, stage, Click} = useContext(Context)
+    const { coins, hp, life, stage, Click, diamonds, clickDamage, damagePerSecond} = useContext(Context)
         return (
             <View style={styles.container}>
                 <View style={styles.coins}>
                     <View>
                        <Text>{coins} <Image source={coin} style={styles.coin}/></Text>
                        
-                        <Text>10 diamonds</Text> 
+                        <Text>{diamonds} diamonds</Text> 
                     </View>
                     <View>
-                        <Text>1k click</Text>
-                        <Text>10k damage</Text>
+                        <Text>{clickDamage} click</Text>
+                        <Text>{damagePerSecond} damage</Text>
                     </View>
                 </View>
 
