@@ -19,8 +19,7 @@ export default function Item(){
                 let newValue = defaultPrice
                 for (let i = 0; i < 10; i++) {
                     tot += newValue
-                    newValue = newValue * 2
-                    
+                    newValue = Number((newValue * 1.2).toFixed(0))
                 }
                 setPrice(tot)  
                 break
@@ -29,8 +28,7 @@ export default function Item(){
                 let newVal = defaultPrice
                 for (let i = 0; i < 100; i++) {
                     tota += newVal
-                    newVal = newVal * 2
-                    console.log(tota)
+                    newVal = Number((newVal * 1.2).toFixed(0))
                 }
                 setPrice(tota)
                 break
@@ -42,7 +40,7 @@ export default function Item(){
                         break
                     }else{
                         total += val
-                        val = val * 2 
+                        val = Number((val * 1.2).toFixed(0))
                     }
                 }
                 if(total === 0){
@@ -64,10 +62,10 @@ export default function Item(){
             </View>
             <Text style={styles.text}>Level {level}</Text>
             <TouchableHighlight style={styles.buyButton} onPress={()=>{
-                if(coins>price){
+                if(coins>=price){
                     if(times === '1x'){
                         setLevel(level + 1)
-                        setDefaultPrice(price)
+                        setDefaultPrice(Number((defaultPrice * 1.2).toFixed(0)))
                         BuyPickaxeUpgrade(price)
                     } else if(times === '10x'){
                         setLevel(level + 10)
@@ -87,7 +85,7 @@ export default function Item(){
                             }else{
                                 vezes++
                                 total += val
-                                val = val * 2 
+                                val = Number((val * 1.2).toFixed(0))
                             }
                         }
                         setLevel(level + vezes)
