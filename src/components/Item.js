@@ -21,18 +21,25 @@ export default function Item(){
                 setPrice((price * 2)*100)
                 break
             case 'max':
-                let newValue = defaultPrice
-                let val = price
-                do {
-                    setPrice(newValue)
-                    newValue = price * 2 
-                } while (price < coins);
-
+                let val = defaultPrice
+                let total = 0
+                while(val < coins){
+                    if(total+val >= coins ){
+                        break
+                    }else{
+                        total += val
+                        val = val * 2 
+                    }
+                }
+                if(total === 0){
+                    total = val
+                }
+                setPrice(total)
                 break
             default:
                 break;
         }
-    },[times])
+    },[times,coins])
 
     return (
         <View style={styles.upgrade}>
@@ -48,13 +55,24 @@ export default function Item(){
                     if(times === '1x'){
                         setLevel(level + 1)
                     } else if(times === '10x'){
-                        for(let i = 0; i < 10;i++){
-                            setLevel(level + 1)
-                        }
+                        setLevel(level + 10)
+                        
                     } else if(times === '100x'){
-                        for(let i = 0; i < 100;i++){
-                            setLevel(level + 1)
+                        setLevel(level + 100)
+                    } else{
+                        let val = defaultPrice
+                        let total = 0
+                        let vezes = 0
+                        while(val < coins){
+                            if(total+val >= coins ){
+                                break
+                            }else{
+                                vezes++
+                                total += val
+                                val = val * 2 
+                            }
                         }
+                        setLevel(level + vezes)
                     }
                     setDefaultPrice(price)
                     
