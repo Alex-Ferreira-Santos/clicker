@@ -53,14 +53,22 @@ export function DataContext({children}){
         }
     }
 
-    function BuyPickaxeUpgrade(price){
-        if(coins < price){
-            return false
-        }else{
-            setClickDamage( clickDamage * 2)
-            setCoins(coins - price)
-            return true
+    function BuyPickaxeUpgrade(price, vezes = 0){
+        switch (times) {
+            case '1x':
+                setClickDamage( clickDamage * 2)
+                break
+            case '10x':
+                setClickDamage( (clickDamage * 2) * 10)
+                break
+            case '100x':
+                setClickDamage( (clickDamage * 2) * 100)
+                break
+            case 'max':
+                setClickDamage( (clickDamage * 2) * vezes)
+                break
         }
+        setCoins(coins - price)
     }
 
     return(

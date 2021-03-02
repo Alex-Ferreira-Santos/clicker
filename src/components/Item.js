@@ -15,10 +15,24 @@ export default function Item(){
                 setPrice(defaultPrice)
                 break;
             case '10x':
-                setPrice((price * 2)*10)  
+                let tot = 0
+                let newValue = defaultPrice
+                for (let i = 0; i < 10; i++) {
+                    tot += newValue
+                    newValue = newValue * 2
+                    
+                }
+                setPrice(tot)  
                 break
             case '100x':
-                setPrice((price * 2)*100)
+                let tota = 0
+                let newVal = defaultPrice
+                for (let i = 0; i < 100; i++) {
+                    tota += newVal
+                    newVal = newVal * 2
+                    console.log(tota)
+                }
+                setPrice(tota)
                 break
             case 'max':
                 let val = defaultPrice
@@ -50,15 +64,19 @@ export default function Item(){
             </View>
             <Text style={styles.text}>Level {level}</Text>
             <TouchableHighlight style={styles.buyButton} onPress={()=>{
-                const possible = BuyPickaxeUpgrade(price)
-                if(possible){
+                if(coins>price){
                     if(times === '1x'){
                         setLevel(level + 1)
+                        setDefaultPrice(price)
+                        BuyPickaxeUpgrade(price)
                     } else if(times === '10x'){
                         setLevel(level + 10)
-                        
+                        setDefaultPrice(price)
+                        BuyPickaxeUpgrade(price)
                     } else if(times === '100x'){
                         setLevel(level + 100)
+                        setDefaultPrice(price)
+                        BuyPickaxeUpgrade(price)
                     } else{
                         let val = defaultPrice
                         let total = 0
@@ -73,9 +91,9 @@ export default function Item(){
                             }
                         }
                         setLevel(level + vezes)
-                    }
-                    setDefaultPrice(price)
-                    
+                        setDefaultPrice(val)
+                        BuyPickaxeUpgrade(price,vezes)
+                    }  
                 }
             }} underlayColor='#0C9029'>
                 <Text style={styles.buyButtonText}>{price} <Image source={coin} style={styles.coin}/></Text>
