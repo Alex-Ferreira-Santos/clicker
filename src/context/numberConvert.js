@@ -1,5 +1,4 @@
-export default function numberCovert(number){
-    console.log(number)
+export default function numberConvert(number){
     if(number >= Math.pow(10,90)){
         number = (number/Math.pow(10,90)).toFixed() + 'AZ'
 

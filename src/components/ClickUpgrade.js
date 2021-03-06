@@ -3,7 +3,7 @@ import {View,Text,TouchableHighlight,Image} from 'react-native'
 import styles from '../styles/item'
 import coin from '../img/coin.png'
 import {Context} from '../context/dataContext'
-import numberCovert from '../context/numberCovert'
+import numberConvert from '../context/numberConvert'
 
 export default function Item(){
     const {clickDamage, BuyPickaxeUpgrade,times,coins} = useContext(Context)
@@ -59,7 +59,7 @@ export default function Item(){
             <View style={styles.img}/>
             <View style={styles.stats}>
                 <Text style={styles.text}>Picareta</Text>
-                <Text style={styles.text}>{clickDamage} de dano</Text>  
+                <Text style={styles.text}>{numberConvert(clickDamage)} de dano</Text>  
             </View>
             <Text style={styles.text}>Level {level}</Text>
             <TouchableHighlight style={styles.buyButton} onPress={()=>{
@@ -95,7 +95,7 @@ export default function Item(){
                     }  
                 }
             }} underlayColor='#0C9029'>
-                <Text style={styles.buyButtonText}>{numberCovert(price)} <Image source={coin} style={styles.coin}/></Text>
+                <Text style={styles.buyButtonText}>{numberConvert(price)} <Image source={coin} style={styles.coin}/></Text>
             </TouchableHighlight>
         </View>
     )

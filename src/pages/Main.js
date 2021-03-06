@@ -3,6 +3,7 @@ import {View,Text,TouchableHighlight,Image} from 'react-native'
 import styles from '../styles/main'
 import coin from '../img/coin.png'
 import {Context} from '../context/dataContext'
+import numberConvert from '../context/numberConvert'
 
 function Main(){
     const { coins, hp, life, stage, Click, diamonds, clickDamage, damagePerSecond} = useContext(Context)
@@ -10,13 +11,13 @@ function Main(){
             <View style={styles.container}>
                 <View style={styles.coins}>
                     <View>
-                       <Text>{coins} <Image source={coin} style={styles.coin}/></Text>
+                       <Text>{numberConvert(coins)} <Image source={coin} style={styles.coin}/></Text>
                        
-                        <Text>{diamonds} diamonds</Text> 
+                        <Text>{numberConvert(diamonds)} diamonds</Text> 
                     </View>
                     <View>
-                        <Text>{clickDamage} click</Text>
-                        <Text>{damagePerSecond} damage</Text>
+                        <Text>{numberConvert(clickDamage)} click</Text>
+                        <Text>{numberConvert(damagePerSecond)} damage</Text>
                     </View>
                 </View>
 
@@ -30,7 +31,7 @@ function Main(){
 
                 <View style={styles.health}>
                     <View style={styles.life}><View style={[styles.TotalLife,{width:`${life}%`}]}/></View>
-                    <Text style={{fontSize: 20}}>{hp} hp</Text>
+                    <Text style={{fontSize: 20}}>{numberConvert(hp)} hp</Text>
                 </View>
             </View>
         )

@@ -1,4 +1,4 @@
-import React,{useState,createContext,useEffect} from 'react'
+import React,{useState,createContext} from 'react'
 
 export const Context = createContext({})
 
@@ -58,13 +58,31 @@ export function DataContext({children}){
                 setClickDamage( clickDamage * 2)
                 break
             case '10x':
-                setClickDamage( (clickDamage * 2) * 10)
+                let tot = 0
+                let newValue = clickDamage
+                for (let i = 0; i < 10; i++) {
+                    tot += newValue
+                    newValue = Number((newValue * 2).toFixed(0))
+                }
+                setClickDamage(tot)
                 break
             case '100x':
-                setClickDamage( (clickDamage * 2) * 100)
+                let total = 0
+                let newVal = clickDamage
+                for (let i = 0; i < 100; i++) {
+                    total += newVal
+                    newVal = Number((newVal * 2).toFixed(0))
+                }
+                setClickDamage(total)
                 break
             case 'max':
-                setClickDamage( (clickDamage * 2) * vezes)
+                let totally = 0
+                let newDamage = clickDamage
+                for (let i = 0; i < vezes; i++) {
+                    totally += newDamage
+                    newDamage = Number((newDamage * 1.2).toFixed(0))
+                }
+                setClickDamage(totally)
                 break
         }
         setCoins(coins - price)

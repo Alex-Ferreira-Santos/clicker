@@ -2,7 +2,7 @@ import React,{useContext} from 'react'
 import {View,Text,TouchableHighlight,ScrollView} from 'react-native'
 import styles from '../styles/upgrade'
 import {Context} from '../context/dataContext'
-import Item from './Item'
+import ClickUpgrade from './ClickUpgrade'
 
 function Upgrade() {
     const {times, Times} = useContext(Context) 
@@ -12,7 +12,7 @@ function Upgrade() {
                     <Text style={styles.buttonText}>{times}</Text>
                 </TouchableHighlight>
                 <ScrollView contentContainerStyle={styles.contentContainerStyle}>
-                    <Item/>
+                    <ClickUpgrade/>
                 </ScrollView> 
             </View>
         )
