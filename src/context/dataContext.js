@@ -1,5 +1,4 @@
 import React,{useState,createContext,useEffect} from 'react'
-import { SectionList } from 'react-native'
 
 export const Context = createContext({})
 

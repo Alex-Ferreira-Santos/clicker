@@ -3,6 +3,7 @@ import {View,Text,TouchableHighlight,Image} from 'react-native'
 import styles from '../styles/item'
 import coin from '../img/coin.png'
 import {Context} from '../context/dataContext'
+import numberCovert from '../context/numberCovert'
 
 export default function Item(){
     const {clickDamage, BuyPickaxeUpgrade,times,coins} = useContext(Context)
@@ -94,7 +95,7 @@ export default function Item(){
                     }  
                 }
             }} underlayColor='#0C9029'>
-                <Text style={styles.buyButtonText}>{price} <Image source={coin} style={styles.coin}/></Text>
+                <Text style={styles.buyButtonText}>{numberCovert(price)} <Image source={coin} style={styles.coin}/></Text>
             </TouchableHighlight>
         </View>
     )
