@@ -35,6 +35,15 @@ const styles = StyleSheet.create({
     coin:{
         width: 20,
         height: 20,
+    },
+    mainData:{
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    level:{
+        position: 'relative',
+        right: 10
     }
 })
 

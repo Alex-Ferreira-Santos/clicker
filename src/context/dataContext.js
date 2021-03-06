@@ -4,7 +4,7 @@ export const Context = createContext({})
 
 export function DataContext({children}){
     const [times,setTimes] = useState('1x') 
-    const [coins,setCoins] = useState(0)
+    const [coins,setCoins] = useState(30)
     const [defaultCoins,setDefaultCoins] = useState(1)
     const [hp, setHp] = useState(10)
     const [defaultHp, setDefaultHp] = useState(10)
@@ -16,11 +16,30 @@ export function DataContext({children}){
     
     useEffect(()=>{
         if(damagePerSecond !== 0){
-            setInterval(()=>{
-                setHp(hp - damagePerSecond)
+            setTimeout(()=>{
+                let letHp = (hp - damagePerSecond/10)
+                let letLife = ((hp - damagePerSecond/10) * life) / hp
+                if(letLife <= 0 || letHp <= 0){
+                    setLife(100)
+                    setHp(defaultHp)
+                    setStage(stage + 1)
+                    if(stage === 10){
+                        setStage(1)
+                        setDefaultCoins(defaultCoins + 1)
+                        let newHp = (defaultHp * 2.5).toFixed(0)
+                        setDefaultHp(newHp)
+                        setHp(newHp)
+                    }
+                }else{
+                    setLife(letLife)
+                    setHp(letHp)
+                }
             },100)
+            setTimeout(()=>{
+                setCoins(coins + defaultCoins)
+            },1000)
         }
-    },[damagePerSecond])
+    },[damagePerSecond,hp])
 
     function Click(){
         setCoins(coins + defaultCoins)
@@ -65,7 +84,7 @@ export function DataContext({children}){
         let newValue = item
         for (let i = 0; i < loopTimes; i++) {
             tot += newValue
-            newValue = Number((newValue * valueTimes).toFixed(0))
+            newValue = Number((newValue * valueTimes).toFixed())
         }
         return tot
     }

@@ -44,12 +44,14 @@ export default function ClickUpgrade(){
 
     return (
         <View style={styles.upgrade}>
-            <View style={styles.img}/>
-            <View style={styles.stats}>
-                <Text style={styles.text}>Picareta</Text>
-                <Text style={styles.text}>{numberConvert(clickDamage)} de dano</Text>  
+            <View style={styles.mainData}>
+                <View style={styles.img}/>
+                <View style={styles.stats}>
+                    <Text style={styles.text}>Picareta</Text>
+                    <Text style={styles.text}>{numberConvert(clickDamage)} de dano</Text>  
+                </View>
             </View>
-            <Text style={styles.text}>Level {level}</Text>
+            <Text style={styles.level}>Level {level}</Text>
             <TouchableHighlight style={styles.buyButton} onPress={()=>{
                 if(coins>=price){
                     if(times === '1x'){

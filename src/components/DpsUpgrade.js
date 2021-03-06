@@ -6,10 +6,10 @@ import {Context} from '../context/dataContext'
 import numberConvert from '../context/numberConvert'
 
 export default function DpsUpgrade(){
-    const {damagePerSecond,times,coins,MultiplyNumber} = useContext(Context)
-    const [level, setLevel] = useState(1)
-    const [price, setPrice] = useState(10)
-    const [defaultPrice, setDefaultPrice] = useState(10)
+    const {damagePerSecond,times,coins,MultiplyNumber,BuyDamagePerSecondUpgrade} = useContext(Context)
+    const [level, setLevel] = useState(0)
+    const [price, setPrice] = useState(30)
+    const [defaultPrice, setDefaultPrice] = useState(30)
     const [unlocked,setUnlocked] = useState(false)
     useEffect(()=>{
         switch (times) {
@@ -51,12 +51,15 @@ export default function DpsUpgrade(){
                 <Text style={styles.text}>{damagePerSecond} de dano</Text>  
             </View>
             {unlocked ? (
-                <Text style={styles.text}>Level {level}</Text>
+                <Text style={styles.level}>Level {level}</Text>
             ) : (
-                <Text style={styles.text}>Desbloquear</Text>
+                <Text style={styles.level}>Desbloquear</Text>
             )}
             
             <TouchableHighlight style={styles.buyButton} onPress={()=>{
+                if(!unlocked){
+                    setUnlocked(true)
+                }
                 if(coins>=price){
                     if(times === '1x'){
                         setLevel(level + 1)
