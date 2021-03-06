@@ -5,8 +5,8 @@ import coin from '../img/coin.png'
 import {Context} from '../context/dataContext'
 import numberConvert from '../context/numberConvert'
 
-export default function Item(){
-    const {clickDamage, BuyPickaxeUpgrade,times,coins} = useContext(Context)
+export default function ClickUpgrade(){
+    const {clickDamage, BuyPickaxeUpgrade,times,coins,MultiplyNumber} = useContext(Context)
     const [level, setLevel] = useState(1)
     const [price, setPrice] = useState(10)
     const [defaultPrice, setDefaultPrice] = useState(10)
@@ -16,22 +16,10 @@ export default function Item(){
                 setPrice(defaultPrice)
                 break;
             case '10x':
-                let tot = 0
-                let newValue = defaultPrice
-                for (let i = 0; i < 10; i++) {
-                    tot += newValue
-                    newValue = Number((newValue * 1.2).toFixed(0))
-                }
-                setPrice(tot)  
+                setPrice(MultiplyNumber(10,1.2,defaultPrice))  
                 break
             case '100x':
-                let tota = 0
-                let newVal = defaultPrice
-                for (let i = 0; i < 100; i++) {
-                    tota += newVal
-                    newVal = Number((newVal * 1.2).toFixed(0))
-                }
-                setPrice(tota)
+                setPrice(MultiplyNumber(100,1.2,defaultPrice))
                 break
             case 'max':
                 let val = defaultPrice

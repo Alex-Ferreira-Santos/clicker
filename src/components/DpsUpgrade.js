@@ -5,33 +5,22 @@ import coin from '../img/coin.png'
 import {Context} from '../context/dataContext'
 import numberConvert from '../context/numberConvert'
 
-export default function Item(){
-    const {damagePerSecond, BuyPickaxeUpgrade,times,coins} = useContext(Context)
+export default function DpsUpgrade(){
+    const {damagePerSecond,times,coins,MultiplyNumber} = useContext(Context)
     const [level, setLevel] = useState(1)
     const [price, setPrice] = useState(10)
     const [defaultPrice, setDefaultPrice] = useState(10)
+    const [unlocked,setUnlocked] = useState(false)
     useEffect(()=>{
         switch (times) {
             case '1x':
                 setPrice(defaultPrice)
                 break;
             case '10x':
-                let tot = 0
-                let newValue = defaultPrice
-                for (let i = 0; i < 10; i++) {
-                    tot += newValue
-                    newValue = Number((newValue * 1.2).toFixed(0))
-                }
-                setPrice(tot)  
+                setPrice(MultiplyNumber(10,1.2,defaultPrice))  
                 break
             case '100x':
-                let tota = 0
-                let newVal = defaultPrice
-                for (let i = 0; i < 100; i++) {
-                    tota += newVal
-                    newVal = Number((newVal * 1.2).toFixed(0))
-                }
-                setPrice(tota)
+                setPrice(MultiplyNumber(100,1.2,defaultPrice))
                 break
             case 'max':
                 let val = defaultPrice
@@ -61,21 +50,26 @@ export default function Item(){
                 <Text style={styles.text}>Mineiro</Text>
                 <Text style={styles.text}>{damagePerSecond} de dano</Text>  
             </View>
-            <Text style={styles.text}>Level {level}</Text>
+            {unlocked ? (
+                <Text style={styles.text}>Level {level}</Text>
+            ) : (
+                <Text style={styles.text}>Desbloquear</Text>
+            )}
+            
             <TouchableHighlight style={styles.buyButton} onPress={()=>{
                 if(coins>=price){
                     if(times === '1x'){
                         setLevel(level + 1)
                         setDefaultPrice(Number((defaultPrice * 1.2).toFixed(0)))
-                        BuyPickaxeUpgrade(price)
+                        BuyDamagePerSecondUpgrade(price)
                     } else if(times === '10x'){
                         setLevel(level + 10)
                         setDefaultPrice(price)
-                        BuyPickaxeUpgrade(price)
+                        BuyDamagePerSecondUpgrade(price)
                     } else if(times === '100x'){
                         setLevel(level + 100)
                         setDefaultPrice(price)
-                        BuyPickaxeUpgrade(price)
+                        BuyDamagePerSecondUpgrade(price)
                     } else{
                         let val = defaultPrice
                         let total = 0
@@ -91,7 +85,7 @@ export default function Item(){
                         }
                         setLevel(level + vezes)
                         setDefaultPrice(val)
-                        BuyPickaxeUpgrade(price,vezes)
+                        BuyDamagePerSecondUpgrade(price,vezes)
                     }  
                 }
             }} underlayColor='#0C9029'>
