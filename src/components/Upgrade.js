@@ -14,7 +14,8 @@ function Upgrade() {
                 </TouchableHighlight>
                 <ScrollView contentContainerStyle={styles.contentContainerStyle}>
                     <ClickUpgrade/>
-                    <DpsUpgrade/>
+                    <DpsUpgrade name="Mineiro" damage={2}/>
+                    <DpsUpgrade name="Drill" damage={10}/>
                 </ScrollView> 
             </View>
         )

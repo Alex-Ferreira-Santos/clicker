@@ -5,12 +5,13 @@ import coin from '../img/coin.png'
 import {Context} from '../context/dataContext'
 import numberConvert from '../context/numberConvert'
 
-export default function DpsUpgrade(){
+export default function DpsUpgrade(props){
     const {damagePerSecond,times,coins,MultiplyNumber,BuyDamagePerSecondUpgrade} = useContext(Context)
     const [level, setLevel] = useState(0)
     const [price, setPrice] = useState(30)
     const [defaultPrice, setDefaultPrice] = useState(30)
     const [unlocked,setUnlocked] = useState(false)
+    const [damage, setDamage] = useState(props.damage)
     useEffect(()=>{
         switch (times) {
             case '1x':
@@ -47,8 +48,8 @@ export default function DpsUpgrade(){
         <View style={styles.upgrade}>
             <View style={styles.img}/>
             <View style={styles.stats}>
-                <Text style={styles.text}>Mineiro</Text>
-                <Text style={styles.text}>{numberConvert(damagePerSecond)} de dano</Text>  
+                <Text style={styles.text}>{props.name}</Text>
+                <Text style={styles.text}>{numberConvert(damage)} de dano</Text>  
             </View>
             {unlocked ? (
                 <Text style={styles.level}>Level {level}</Text>

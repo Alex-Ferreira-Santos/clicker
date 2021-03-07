@@ -9,7 +9,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: 'pink',
         width: '95%',
-        flex:1,
         alignSelf: 'center'
     },
     times:{
