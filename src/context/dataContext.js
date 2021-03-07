@@ -4,7 +4,7 @@ export const Context = createContext({})
 
 export function DataContext({children}){
     const [times,setTimes] = useState('1x') 
-    const [coins,setCoins] = useState(30)
+    const [coins,setCoins] = useState(30000)
     const [defaultCoins,setDefaultCoins] = useState(1)
     const [hp, setHp] = useState(10)
     const [defaultHp, setDefaultHp] = useState(10)
@@ -17,10 +17,13 @@ export function DataContext({children}){
     
     useEffect(()=>{
         if(unlockedDamage){
-            setInterval(()=>{
+            const interval = setInterval(()=>{
                 let letHp = (hp - damagePerSecond/10)
-                let letLife = ((hp - damagePerSecond/10) * life) / hp
+                let letLife = ((hp - damagePerSecond/10) * life) / hp                
                 if(letLife <= 0 || letHp <= 0){
+                    if(damagePerSecond/10 > hp){
+                        setHp(0)
+                    }
                     setLife(100)
                     setHp(defaultHp)
                     setStage(stage + 1)
@@ -36,8 +39,10 @@ export function DataContext({children}){
                     setHp(letHp)
                 }
             },100)
+            return () => clearInterval(interval)
         } 
-    },[unlockedDamage, life])
+        
+    },[unlockedDamage, hp])
 
     useEffect(()=>{
         if(unlockedDamage){

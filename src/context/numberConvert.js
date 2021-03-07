@@ -112,9 +112,12 @@ export default function numberConvert(number){
     }else if(number >= Math.pow(10,6)){
         number = (number/Math.pow(10,6)).toFixed() + 'M'
 
-    }else if(number >= Math.pow(10,3)){   
+    }else if(number >= Math.pow(10,4)){   
         number = (number/Math.pow(10,3)).toFixed() + 'K'   
-
+    }else if(number >= Math.pow(10,3)){   
+        number = (number/Math.pow(10,3)).toFixed(1) + 'K'   
+    }else if(typeof number === 'number'){
+        number = number.toFixed()
     }
     return number
 }

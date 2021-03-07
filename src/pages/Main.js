@@ -31,7 +31,7 @@ function Main(){
 
                 <View style={styles.health}>
                     <View style={styles.life}><View style={[styles.TotalLife,{width:`${life}%`}]}/></View>
-                    <Text style={{fontSize: 20}}>{numberConvert(hp).toFixed()} hp</Text>
+                    <Text style={{fontSize: 20}}>{numberConvert(hp)} hp</Text>
                 </View>
             </View>
         )

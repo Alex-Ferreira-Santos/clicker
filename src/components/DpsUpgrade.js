@@ -48,7 +48,7 @@ export default function DpsUpgrade(){
             <View style={styles.img}/>
             <View style={styles.stats}>
                 <Text style={styles.text}>Mineiro</Text>
-                <Text style={styles.text}>{damagePerSecond} de dano</Text>  
+                <Text style={styles.text}>{numberConvert(damagePerSecond)} de dano</Text>  
             </View>
             {unlocked ? (
                 <Text style={styles.level}>Level {level}</Text>
