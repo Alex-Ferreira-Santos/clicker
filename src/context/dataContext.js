@@ -13,10 +13,11 @@ export function DataContext({children}){
     const [diamonds, setDiamonds] = useState(0)
     const [clickDamage, setClickDamage] = useState(1)
     const [damagePerSecond, setDamagePerSecond] = useState(0)
+    const [unlockedDamage, setUnlockedDamage] = useState(false)
     
     useEffect(()=>{
-        if(damagePerSecond !== 0){
-            setTimeout(()=>{
+        if(unlockedDamage){
+            setInterval(()=>{
                 let letHp = (hp - damagePerSecond/10)
                 let letLife = ((hp - damagePerSecond/10) * life) / hp
                 if(letLife <= 0 || letHp <= 0){
@@ -35,11 +36,17 @@ export function DataContext({children}){
                     setHp(letHp)
                 }
             },100)
-            setTimeout(()=>{
+        } 
+    },[unlockedDamage, life])
+
+    useEffect(()=>{
+        if(unlockedDamage){
+            const interval = setInterval(()=>{        
                 setCoins(coins + defaultCoins)
             },1000)
+            return () => clearInterval(interval)
         }
-    },[damagePerSecond,hp])
+    },[coins,unlockedDamage])
 
     function Click(){
         setCoins(coins + defaultCoins)
@@ -89,7 +96,7 @@ export function DataContext({children}){
         return tot
     }
 
-    function BuyPickaxeUpgrade(price, vezes = 0){
+    function BuyPickaxeUpgrade(price, vezes = 0){    
         switch (times) {
             case '1x':
                 setClickDamage( clickDamage * 2)
@@ -129,6 +136,7 @@ export function DataContext({children}){
                 break
         }
         setCoins(coins - price)
+        setUnlockedDamage(true)
     }
 
     return(
