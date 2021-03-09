@@ -119,7 +119,7 @@ export function DataContext({children}){
         setCoins(coins - price)
     }
 
-    function BuyDamagePerSecondUpgrade(price,vezes = 0){
+    function BuyDamagePerSecondUpgrade(price,damage,vezes = 0){
         let newDamageValue
         if(damagePerSecond === 0){
             newDamageValue = 1

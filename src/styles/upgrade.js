@@ -9,7 +9,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: 'pink',
         width: '95%',
-        alignSelf: 'center'
+        alignSelf: 'center',
+        paddingBottom: 10
     },
     times:{
         backgroundColor: '#4BAF9D',

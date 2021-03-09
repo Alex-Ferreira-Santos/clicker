@@ -65,15 +65,15 @@ export default function DpsUpgrade(props){
                     if(times === '1x'){
                         setLevel(level + 1)
                         setDefaultPrice(Number((defaultPrice * 1.2).toFixed(0)))
-                        BuyDamagePerSecondUpgrade(price)
+                        BuyDamagePerSecondUpgrade(price,damage)
                     } else if(times === '10x'){
                         setLevel(level + 10)
                         setDefaultPrice(price)
-                        BuyDamagePerSecondUpgrade(price)
+                        BuyDamagePerSecondUpgrade(price,damage)
                     } else if(times === '100x'){
                         setLevel(level + 100)
                         setDefaultPrice(price)
-                        BuyDamagePerSecondUpgrade(price)
+                        BuyDamagePerSecondUpgrade(price,damage)
                     } else{
                         let val = defaultPrice
                         let total = 0
@@ -89,7 +89,7 @@ export default function DpsUpgrade(props){
                         }
                         setLevel(level + vezes)
                         setDefaultPrice(val)
-                        BuyDamagePerSecondUpgrade(price,vezes)
+                        BuyDamagePerSecondUpgrade(price,damage,vezes)
                     }  
                 }
             }} underlayColor='#0C9029'>
